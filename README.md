@@ -8,7 +8,7 @@ In the test/resources you will find some different rest posts.
 
 docker-compose -f docker/docker-compose.yml up &
 
-##Phonetic encoders are alogorithms for indexing words by their pronunciation.
+# Phonetic encoders
 
 ### Metaphone, Double Metaphone, and Metaphone 3 :
 suitable for use with most English words, not just names. Metaphone algorithms are the basis for many popular spell checkers. The Double Metaphone phonetic encoding algorithm is the second generation of this algorithm.

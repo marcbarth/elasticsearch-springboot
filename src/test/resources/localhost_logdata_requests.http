@@ -1,0 +1,40 @@
+
+### find all
+GET http://localhost:8080/api/logdata
+Accept: application/json
+
+### save all
+POST http://localhost:8080/api/logdata/createInBulk
+Content-Type: application/json
+
+[
+  {
+    "id": "cf158a67-bea0-4818-sdfsdafa-dsfgdfgd",
+    "host": "xa1000",
+    "date": "2022-05-11T00:00:00.000+00:00",
+    "description": "foo",
+    "size": 1.2,
+    "status": "inactive"
+  },
+  {
+    "id": "cf158a67-bea0-4818-sdfsdafa-577a7b0ad9c0",
+    "host": "xa2000",
+    "date": "2022-05-11T00:00:00.000+00:00",
+    "description": "bar",
+    "size": 1.2,
+    "status": "inactive"
+  }
+]
+
+### search by description
+###  Inkl Asciifolding,german snowbal, Daitch–Mokotoff Soundex:(Gruesse, Grusse, Grüsse, Gruésse,Petkovich,Pedcovitsch)
+GET http://localhost:8080/api/logdata/simplesearch?description=Pedcovitsch
+Accept: application/json
+
+### search multi term
+GET http://localhost:8080/api/logdata/multisearch?term=bar xa1000
+Accept: application/json
+
+### search  fuzzy
+GET http://localhost:8080/api/logdata/fuzzysearch?term=ax1000
+Accept: application/json

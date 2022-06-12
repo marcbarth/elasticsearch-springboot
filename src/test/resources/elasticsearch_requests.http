@@ -1,0 +1,55 @@
+### Show Indices
+GET http://localhost:9200/_cat/indices
+Accept: application/json
+
+### Show Aliases
+GET http://localhost:9200/_cat/aliases
+Accept: application/json
+
+### get _mapping
+GET http://localhost:9200/logdataindex_2022-06-11-21-22-48/_mapping
+Accept: application/json
+
+### SQL Query on Text https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html
+POST http://localhost:9200/_sql?format=txt
+Content-Type: application/json
+
+{
+  "query": "SELECT id,host,description FROM logdataindex WHERE MATCH(host, 'xa1000') ORDER BY date DESC LIMIT 5 "
+}
+
+### SQL Query on ID https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html
+POST http://localhost:9200/_sql?format=txt
+Content-Type: application/json
+
+{
+  "query": "SELECT id,host,description FROM logdataindex WHERE id LIKE 'f9c2a626-343d-4d84-9405-13d441c6232b' ORDER BY date DESC LIMIT 5 "
+}
+
+### DSL Query https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+GET http://localhost:9200/logdataindex/_search?pretty&filter_path=hits.hits._source.id,hits.hits._source.host,hits.hits._source.description,,hits.hits._source.date
+Content-Type: application/json
+
+{
+  "sort" : [
+    "date"
+  ],
+  "query": {
+    "match": {
+      "host": "xa2000"
+    }
+  }
+
+}
+
+###  search version true
+GET  http://localhost:9200/logdataindex/_search?pretty=true
+Content-Type: application/json
+
+{
+    "version": true,
+    "query" : {
+        "term" : { "host" : "xa1000" }
+    }
+}
+

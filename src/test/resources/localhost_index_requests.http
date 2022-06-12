@@ -1,0 +1,7 @@
+### delete Alias and Index
+GET http://localhost:8080/api/index/delete?alias=logdataindex
+Accept: application/json
+
+### rebuild Alias and Index
+GET http://localhost:8080/api/index/rebuildIndex?alias=logdataindex
+Accept: application/json

@@ -10,12 +10,12 @@ class LogDataController(private val logDataService: LogDataService) {
 
     //find Operations
     @GetMapping
-    fun listAll(): List<LogData> {
+    fun listAll(): List<LogData?> {
         return logDataService.findAll()
     }
 
     @GetMapping("/simplesearch")
-    fun searchLogDataByHost(@RequestParam("description") description: String?): List<LogData> {
+    fun searchLogDataByHost(@RequestParam("description") description: String?): List<LogData?> {
         return logDataService.findByDescription(description)
     }
 

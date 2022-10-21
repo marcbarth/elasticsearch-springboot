@@ -6,7 +6,10 @@ In the test/resources you will find some different rest posts.
 
 # Install Elasticsearch DockerImage
 
-docker-compose -f docker/docker-compose.yml up &
+1. first build it and install phonetic plugin
+docker-compose -f docker/docker-compose.yml build
+2. run container
+docker-compose -f docker/docker-compose.yml up 
 
 # Phonetic encoders
 

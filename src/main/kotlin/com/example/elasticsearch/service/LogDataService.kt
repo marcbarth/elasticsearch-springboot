@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service
 @Service
 class LogDataService(private val logDataRepository: LogDataRepository) {
 
-    fun findAll(): List<LogData> {
+    fun findAll(): List<LogData?> {
         return logDataRepository.findAll().toList()
     }
 
-    fun findByDescription(description: String?): List<LogData> {
+    fun findByDescription(description: String?): List<LogData?> {
         return logDataRepository.findByDescription(description)
     }
 

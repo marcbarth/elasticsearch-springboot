@@ -15,6 +15,7 @@ because the installation of phonetic plugins needs a restart of elastic.
 
     docker build -t example.com/elasticsearch-with-phonetic-plugin docker
 
+# List of phonetic filter
 - Metaphone, Double Metaphone, and Metaphone 3 :
 suitable for use with most English words, not just names. Metaphone algorithms are the basis for many popular spell checkers. The Double Metaphone phonetic encoding algorithm is the second generation of this algorithm.
 

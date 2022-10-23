@@ -88,7 +88,7 @@ class ElasticIndexService(
     fun rebuildIndex(aliasName: String) {
         val previousIndices = findIndex(aliasName)
         val indexName = createIndex(aliasName)
-        val objectMapper = ObjectMapper().configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        val objectMapper = ObjectMapper().configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
 
         val bulkRequest = BulkRequest().add(
             dataGenerator.randomLogDataList()

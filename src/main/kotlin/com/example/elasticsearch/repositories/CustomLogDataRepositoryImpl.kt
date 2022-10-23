@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository
 internal class CustomLogDataRepositoryImpl(private val elasticsearchRestTemplate: ElasticsearchRestTemplate) :
     CustomLogDataRepository {
 
-    override fun findBySearchMultiTerm(term: String?): List<LogData> {
+    override fun findHostAndDescriptionByMultiMatchQuery(term: String?): List<LogData?> {
 
         val searchQuery = NativeSearchQueryBuilder()
             .withQuery(
@@ -31,7 +31,7 @@ internal class CustomLogDataRepositoryImpl(private val elasticsearchRestTemplate
             .searchHits.map { it.content }
     }
 
-    override fun findByHostFuzzyPageable(term: String, page:Int, size: Int): List<LogData> {
+    override fun findHostByFuzzyPageable(term: String, page:Int, size: Int): List<LogData?> {
 
         val searchQuery = NativeSearchQueryBuilder()
             .withQuery(

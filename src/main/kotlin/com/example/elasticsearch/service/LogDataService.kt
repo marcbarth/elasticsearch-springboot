@@ -11,16 +11,16 @@ class LogDataService(private val logDataRepository: LogDataRepository) {
         return logDataRepository.findAll().toList()
     }
 
-    fun findByDescription(description: String?): List<LogData?> {
+    fun findByDescription(description: String): List<LogData?> {
         return logDataRepository.findByDescription(description)
     }
 
-    fun findBySearchMultiTerm(term: String): List<LogData> {
-        return logDataRepository.findBySearchMultiTerm(term)
+    fun findBySearchMultiTerm(term: String): List<LogData?> {
+        return logDataRepository.findHostAndDescriptionByMultiMatchQuery(term)
     }
 
-    fun findBySearchFuzzyTerm(term: String): List<LogData> {
-        return logDataRepository.findByHostFuzzyPageable(term,0,10)
+    fun findBySearchFuzzyTerm(term: String): List<LogData?> {
+        return logDataRepository.findHostByFuzzyPageable(term,0,10)
     }
 
     fun saveLogData(logData: LogData): LogData {

@@ -15,17 +15,17 @@ class LogDataController(private val logDataService: LogDataService) {
     }
 
     @GetMapping("/simplesearch")
-    fun searchLogDataByHost(@RequestParam("description") description: String?): List<LogData?> {
+    fun searchLogDataByHost(@RequestParam("description") description: String): List<LogData?> {
         return logDataService.findByDescription(description)
     }
 
     @GetMapping("/multisearch")
-    fun searchLogDataByMultiTerm(@RequestParam("term") term: String): List<LogData> {
+    fun searchLogDataByMultiTerm(@RequestParam("term") term: String): List<LogData?> {
         return logDataService.findBySearchMultiTerm(term)
     }
 
     @GetMapping("/fuzzysearch")
-    fun searchLogDataByFuzzyTerm(@RequestParam("term") term: String): List<LogData> {
+    fun searchLogDataByFuzzyTerm(@RequestParam("term") term: String): List<LogData?> {
         return logDataService.findBySearchFuzzyTerm(term)
     }
 
